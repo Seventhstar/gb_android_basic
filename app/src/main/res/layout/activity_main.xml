@@ -6,6 +6,26 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+
+    <com.google.android.material.appbar.AppBarLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/ThemeOverlay.MaterialComponents.Toolbar.Primary"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/my_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:navigationIcon="@drawable/calculator"
+            app:title="@string/app_name" />
+    </com.google.android.material.appbar.AppBarLayout>
+
+
+
+
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
@@ -17,23 +37,42 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+        <TextView
+            android:id="@+id/test_result"
+            android:background="@color/colorPrimary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/test_current"
+            android:background="@color/colorPrimaryDark"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
         <LinearLayout
             android:id="@+id/row_text"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="72dp"
             android:layout_margin="@dimen/btn_margin"
-            android:backgroundTint="@color/gray">
+            android:background="?attr/colorPrimary"
+            android:backgroundTint="@color/colorPrimary">
+
+
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:background="?attr/colorPrimary"
+                android:gravity="clip_vertical">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
+                    android:id="@+id/digit_screen"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:hint="@string/zero"
-                    android:editable="false"
-                    android:padding="@dimen/text_input_padding"
+                    android:layout_gravity="end"
+                    android:background="?attr/colorPrimary"
+                    android:hint="@string/start_result_string"
+                    android:text="@string/start_result_string"
+                    android:singleLine="true"
                     android:textSize="@dimen/main_text_size" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -42,7 +81,10 @@
         <LinearLayout
             android:id="@+id/row0"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_margin="0dp"
+            android:padding="0dp"
+            android:textSize="32sp">
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/button_clear"
@@ -50,9 +92,10 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/btn_margin"
                 android:layout_weight="1"
-
                 android:backgroundTint="@android:color/holo_red_light"
-                android:text="@string/clear" />
+                android:onClick="clearAll"
+                android:text="@string/clear"
+                android:textSize="32sp" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/button_persent"
@@ -61,7 +104,9 @@
                 android:layout_margin="@dimen/btn_margin"
                 android:layout_weight="1"
                 android:backgroundTint="@android:color/darker_gray"
-                android:text="@string/percent" />
+                android:onClick="takePercent"
+                android:text="@string/percent"
+                android:textSize="32sp" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/button_to_memory"
@@ -70,6 +115,7 @@
                 android:layout_margin="@dimen/btn_margin"
                 android:layout_weight="1"
                 android:backgroundTint="@android:color/darker_gray"
+                android:onClick="toMemory"
                 android:text="@string/to_memory" />
 
             <com.google.android.material.button.MaterialButton
@@ -79,6 +125,7 @@
                 android:layout_margin="@dimen/btn_margin"
                 android:layout_weight="1"
                 android:backgroundTint="@android:color/holo_orange_dark"
+                android:onClick="doAction"
                 android:text="@string/divide" />
         </LinearLayout>
 
@@ -89,11 +136,13 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/button_7"
+                value="7"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/btn_margin"
                 android:layout_weight="1"
                 android:backgroundTint="@color/gray"
+                android:onClick="addNumber"
 
                 android:text="@string/seven" />
 
@@ -104,6 +153,7 @@
                 android:layout_margin="@dimen/btn_margin"
                 android:layout_weight="1"
                 android:backgroundTint="@color/gray"
+                android:onClick="addNumber"
                 android:text="@string/eight" />
 
             <com.google.android.material.button.MaterialButton
@@ -113,6 +163,7 @@
                 android:layout_margin="@dimen/btn_margin"
                 android:layout_weight="1"
                 android:backgroundTint="@color/gray"
+                android:onClick="addNumber"
                 android:text="@string/nine" />
 
             <com.google.android.material.button.MaterialButton
@@ -122,6 +173,7 @@
                 android:layout_margin="@dimen/btn_margin"
                 android:layout_weight="1"
                 android:backgroundTint="@android:color/holo_orange_dark"
+                android:onClick="doAction"
                 android:text="@string/multiply" />
         </LinearLayout>
 
@@ -139,6 +191,7 @@
                 android:layout_margin="@dimen/btn_margin"
                 android:layout_weight="1"
                 android:backgroundTint="@color/gray"
+                android:onClick="addNumber"
                 android:text="@string/four" />
 
             <com.google.android.material.button.MaterialButton
@@ -148,6 +201,7 @@
                 android:layout_margin="@dimen/btn_margin"
                 android:layout_weight="1"
                 android:backgroundTint="@color/gray"
+                android:onClick="addNumber"
                 android:text="@string/five" />
 
             <com.google.android.material.button.MaterialButton
@@ -157,6 +211,7 @@
                 android:layout_margin="@dimen/btn_margin"
                 android:layout_weight="1"
                 android:backgroundTint="@color/gray"
+                android:onClick="addNumber"
                 android:text="@string/six" />
 
             <com.google.android.material.button.MaterialButton
@@ -166,6 +221,7 @@
                 android:layout_margin="@dimen/btn_margin"
                 android:layout_weight="1"
                 android:backgroundTint="@android:color/holo_orange_dark"
+                android:onClick="doAction"
                 android:text="@string/minus" />
         </LinearLayout>
 
@@ -182,6 +238,7 @@
                 android:layout_margin="@dimen/btn_margin"
                 android:layout_weight="1"
                 android:backgroundTint="@color/gray"
+                android:onClick="addNumber"
                 android:text="@string/one" />
 
             <com.google.android.material.button.MaterialButton
@@ -191,6 +248,7 @@
                 android:layout_margin="@dimen/btn_margin"
                 android:layout_weight="1"
                 android:backgroundTint="@color/gray"
+                android:onClick="addNumber"
                 android:text="@string/two" />
 
             <com.google.android.material.button.MaterialButton
@@ -200,6 +258,7 @@
                 android:layout_margin="@dimen/btn_margin"
                 android:layout_weight="1"
                 android:backgroundTint="@color/gray"
+                android:onClick="addNumber"
                 android:text="@string/three" />
 
             <com.google.android.material.button.MaterialButton
@@ -209,6 +268,7 @@
                 android:layout_margin="@dimen/btn_margin"
                 android:layout_weight="1"
                 android:backgroundTint="@android:color/holo_orange_dark"
+                android:onClick="doAction"
                 android:text="@string/plus" />
         </LinearLayout>
 
@@ -223,8 +283,9 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/btn_margin"
-                android:layout_weight="2.05"
+                android:layout_weight="2"
                 android:backgroundTint="@color/gray"
+                android:onClick="addNumber"
                 android:text="@string/zero" />
 
             <com.google.android.material.button.MaterialButton
@@ -234,6 +295,7 @@
                 android:layout_margin="@dimen/btn_margin"
                 android:layout_weight="1"
                 android:backgroundTint="@color/gray"
+                android:onClick="addPoint"
                 android:text="@string/point" />
 
             <com.google.android.material.button.MaterialButton
@@ -243,6 +305,7 @@
                 android:layout_margin="@dimen/btn_margin"
                 android:layout_weight="1"
                 android:backgroundTint="@android:color/holo_orange_dark"
+                android:onClick="doAction"
                 android:text="@string/do_action" />
 
         </LinearLayout>

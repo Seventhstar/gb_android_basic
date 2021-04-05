@@ -4,9 +4,13 @@
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+<!--        <item name="colorAccent">@color/colorAccent</item>-->
 
         <item name="colorControlHighlight">@android:color/white</item>
+<!--    </style>-->
+
+<!--    <style name="GreenText" parent="TextAppearance.AppCompat">-->
+        <item name="android:textColor">#333</item>
     </style>
 
 </resources>

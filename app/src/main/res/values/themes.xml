@@ -1,0 +1,19 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="MyTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="android:textSize">32sp</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorPrimaryVariant">@color/colorPrimaryDark</item>
+<!--        <item name="colorOnPrimary">@color/colorAccent</item>-->
+        <item name="colorSurface">@color/colorPrimary</item>
+        <item name="colorOnSurface">@color/design_default_color_surface</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textStyle">italic</item>
+    </style>
+    <style name="TextView" parent="android:Widget.TextView">
+<!--        <item name="android:background">@color/white</item>-->
+<!--        <item name="android:textColor">@color/black</item>-->
+    </style>
+</resources>
